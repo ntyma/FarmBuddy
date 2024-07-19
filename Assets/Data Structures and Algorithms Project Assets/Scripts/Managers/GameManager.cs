@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +28,15 @@ public class GameManager : MonoBehaviour
 
         _instance = this;
     }
+
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        Debug.Log("Click");
+    //        Debug.Log(DateTime.Today.ToString("g"));
+    //    }
+    //}
 
     public Shop GetShop()
     {

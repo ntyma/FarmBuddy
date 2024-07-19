@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class Harvester : MonoBehaviour
 
     // Harvest to sell
     // Assignment 2 - Data structure to hold collected harvests
+    private List<CollectedHarvest> collectedHarvests = new List<CollectedHarvest>();
 
     public static Harvester _instance;
        
@@ -55,6 +57,28 @@ public class Harvester : MonoBehaviour
     public void SortHarvestByAmount()
     {
         // Sort the collected harvest using Quick sort
+    }
+
+
+    public void CollectHarvest(string plantName, int harvestAmount)
+    {
+        string time = DateTime.Today.ToString("g");
+        CollectedHarvest harvest = new CollectedHarvest(plantName, time, harvestAmount);
+        collectedHarvests.Add(harvest);
+        UIManager._instance.UpdateStatus(MakeHarvestString(plantName, harvestAmount, time));
+    }
+
+    private string MakeHarvestString(string plantName, int harvestAmount, string time)
+    {
+        string str;
+        if(harvestAmount > 1)
+        {
+            str = "s were harvested";
+        } else
+        {
+            str = " was harversted";
+        }
+        return "On " + time + ", " + harvestAmount.ToString() + " " + plantName + str;
     }
 
 }
