@@ -19,7 +19,7 @@ public class Shop : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not rnough coins to buy seeds");
+            Debug.Log("Not enough coins to buy seeds");
             UIManager._instance.UpdateStatus("Not enough coins");
         }
         
@@ -27,5 +27,10 @@ public class Shop : MonoBehaviour
 
     //Assignment 2
     // Get the harvest, add coins for the value, update UI and remove the item from the data structure
-
+    public void SellHarvest(CollectedHarvest harvestElement, float valuePerItem)
+    {
+        //Add coins
+        _coins += valuePerItem * harvestElement._amount;
+        Harvester._instance.RemoveHarvest(harvestElement);
+    }
 }
