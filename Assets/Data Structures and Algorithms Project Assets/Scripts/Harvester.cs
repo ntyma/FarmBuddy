@@ -14,10 +14,9 @@ public class Harvester : MonoBehaviour
     // Harvest to sell
     // Assignment 2 - Data structure to hold collected harvests
     private List<CollectedHarvest> collectedHarvests = new List<CollectedHarvest>();
+    public Action OnCollectionChanged;
 
     public static Harvester _instance;
-
-    private CollectedHarvest testPumpkin;//=============================
        
     private void Awake()
     {
@@ -40,12 +39,13 @@ public class Harvester : MonoBehaviour
     {
         collectedHarvests.Remove(harvest);
         UpdateAnalytics(harvest._name, -harvest._amount);
+        OnCollectionChanged.Invoke();
     }
 
     // Assignment 2 - CollectHarvest method to collect the harvest when picked up
     
 
-        public void ShowHarvest(string plantName, int harvestAmount, int seedAmount, Vector2 position)
+    public void ShowHarvest(string plantName, int harvestAmount, int seedAmount, Vector2 position)
     {
         // initiate a harvest with random amount
         Harvest harvest = Instantiate(_harvest, position + Vector2.up + Vector2.right, Quaternion.identity);
@@ -78,6 +78,7 @@ public class Harvester : MonoBehaviour
         collectedHarvests.Add(harvest);
         UpdateAnalytics(plantName, harvestAmount);
         UIManager._instance.UpdateStatus(MakeHarvestString(plantName, harvestAmount, time));
+        OnCollectionChanged.Invoke();
     }
 
     private void UpdateAnalytics(string plantName, int harvestAmount)
@@ -108,33 +109,33 @@ public class Harvester : MonoBehaviour
         return "On " + time + ", " + harvestAmount.ToString() + " " + plantName + str;
     }
 
-    private void Update() //=======================================================
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            PrintHarvest();
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
+    //private void Update() //=======================================================
+    //{
+    //    if (Input.GetKeyDown(KeyCode.P))
+    //    {
+    //        PrintHarvest();
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.S))
+    //    {
 
-        }
-    }
+    //    }
+    //}
 
-    public void PrintHarvest() //=======================================================
-    {
-        Debug.Log("========================");
-        int i = 1;
-        foreach (CollectedHarvest h in collectedHarvests)
-        {
-            Debug.Log(i.ToString() + ": " + h._name + " ; " + h._time + " ; " + h._amount.ToString());
-            i++;
-        }
-        Debug.Log("-----------");
-        int currentAmount;
-        if (_harvests.TryGetValue(collectedHarvests[1]._name, out currentAmount)) {
-            Debug.Log(currentAmount);
-        }
-    }
+    //public void PrintHarvest() //=======================================================
+    //{
+    //    Debug.Log("========================");
+    //    int i = 1;
+    //    foreach (CollectedHarvest h in collectedHarvests)
+    //    {
+    //        Debug.Log(i.ToString() + ": " + h._name + " ; " + h._time + " ; " + h._amount.ToString());
+    //        i++;
+    //    }
+    //    Debug.Log("-----------");
+    //    int currentAmount;
+    //    if (_harvests.TryGetValue(collectedHarvests[1]._name, out currentAmount)) {
+    //        Debug.Log(currentAmount);
+    //    }
+    //}
 
 }
 

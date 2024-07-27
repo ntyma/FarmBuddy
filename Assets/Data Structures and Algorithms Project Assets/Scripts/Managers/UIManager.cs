@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private int pumpkinPrice;
 
     private List<SellHarvestUIElement> uiElements = new List<SellHarvestUIElement>();
+    private bool SellUINeedsUpdate = false;
 
     public static UIManager _instance { get; private set; }
 
@@ -33,6 +34,12 @@ public class UIManager : MonoBehaviour
         }
 
         _instance = this;
+       
+    }
+
+    private void Start()
+    {
+        Harvester._instance.OnCollectionChanged += OnCollectionChanged;
     }
 
     public void UpdateStatus(string text)
@@ -76,27 +83,36 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if(uiElements.Count > 0)
+        if(SellUINeedsUpdate)
         {
-            Debug.Log("clean the list");
-            foreach(SellHarvestUIElement element in uiElements)
+            if (uiElements.Count > 0)
             {
-                if(element != null)
+                Debug.Log("clean the list");
+                foreach (SellHarvestUIElement element in uiElements)
                 {
-                    Destroy(element.gameObject);
+                    if (element != null)
+                    {
+                        Destroy(element.gameObject);
+                    }
                 }
+                uiElements.Clear();
             }
-            uiElements.Clear();
-        }
 
-        Debug.Log("Showing harvest");
-        foreach (CollectedHarvest harvest in collectedHarvest)
-        {
-            SellHarvestUIElement element = Instantiate(_sellHarvestUIElement, _sellHarvestHolder);
-            element.SetElement(harvest, harvest._name, harvest._time, 3, harvest._amount, pumpkinSprite);
-            uiElements.Add(element);
+            Debug.Log("Showing harvest");
+            foreach (CollectedHarvest harvest in collectedHarvest)
+            {
+                SellHarvestUIElement element = Instantiate(_sellHarvestUIElement, _sellHarvestHolder);
+                element.SetElement(harvest, harvest._name, harvest._time, 3, harvest._amount, pumpkinSprite);
+                uiElements.Add(element);
+            }
+            SellUINeedsUpdate = false;
         }
         
+    }
+
+    private void OnCollectionChanged()
+    {
+        SellUINeedsUpdate = true;
     }
 
     
