@@ -18,6 +18,10 @@ public class UIManager : MonoBehaviour
     [Header("Shop-SELL")]
     [SerializeField] private Transform _sellHarvestHolder;
     [SerializeField] private SellHarvestUIElement _sellHarvestUIElement;
+    [SerializeField] private Sprite pumpkinSprite;
+    [SerializeField] private int pumpkinPrice;
+
+    private List<SellHarvestUIElement> uiElements = new List<SellHarvestUIElement>();
 
     public static UIManager _instance { get; private set; }
 
@@ -64,7 +68,30 @@ public class UIManager : MonoBehaviour
 
     public void ShowTotalHarvest()
     {
-        //Assignment 2
+        List<CollectedHarvest> collectedHarvest = Harvester._instance.GetCollectedHarvest();
+
+        if(collectedHarvest.Count == 0)
+        {
+            Debug.Log("nothing to show");
+            return;
+        }
+        if(uiElements.Count > 0)
+        {
+            Debug.Log("clean the list");
+            foreach(SellHarvestUIElement element in uiElements)
+            {
+                Destroy(element.gameObject);
+            }
+            uiElements.Clear();
+        }
+
+        Debug.Log("Showing harvest");
+        foreach (CollectedHarvest harvest in collectedHarvest)
+        {
+            SellHarvestUIElement element = Instantiate(_sellHarvestUIElement, _sellHarvestHolder);
+            element.SetElement(harvest, harvest._name, harvest._time, 3, harvest._amount, pumpkinSprite);
+            uiElements.Add(element);
+        }
         
     }
 

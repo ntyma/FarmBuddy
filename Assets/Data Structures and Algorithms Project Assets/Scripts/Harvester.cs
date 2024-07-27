@@ -16,6 +16,8 @@ public class Harvester : MonoBehaviour
     private List<CollectedHarvest> collectedHarvests = new List<CollectedHarvest>();
 
     public static Harvester _instance;
+
+    private CollectedHarvest testPumpkin;//=============================
        
     private void Awake()
     {
@@ -30,7 +32,7 @@ public class Harvester : MonoBehaviour
     // Assignment 2
     public List<CollectedHarvest> GetCollectedHarvest()
     {
-        return null;
+        return collectedHarvests;
     }
 
     // Assignment 2
@@ -38,13 +40,12 @@ public class Harvester : MonoBehaviour
     {
         collectedHarvests.Remove(harvest);
         UpdateAnalytics(harvest._name, -harvest._amount);
-        PrintHarvest();
     }
 
     // Assignment 2 - CollectHarvest method to collect the harvest when picked up
     
 
-    public void ShowHarvest(string plantName, int harvestAmount, int seedAmount, Vector2 position)
+        public void ShowHarvest(string plantName, int harvestAmount, int seedAmount, Vector2 position)
     {
         // initiate a harvest with random amount
         Harvest harvest = Instantiate(_harvest, position + Vector2.up + Vector2.right, Quaternion.identity);
@@ -61,22 +62,22 @@ public class Harvester : MonoBehaviour
         // Sort the collected harvest using Quick sort
     }
 
-    private void Start()
-    {
-        string time = DateTime.Today.ToString("g");
-        CollectedHarvest harvest = new CollectedHarvest("Pumpkin", time, 3);
-        collectedHarvests.Add(harvest);
-        UpdateAnalytics("Pumpkin", 3);
-    }
+    //private void Start() //=======================================================
+    //{
+    //    string time = DateTime.Now.ToString("g");
+    //    CollectedHarvest harvest = new CollectedHarvest("Pumpkin", time, 3);
+    //    testPumpkin = harvest;
+    //    collectedHarvests.Add(harvest);
+    //    UpdateAnalytics("Pumpkin", 3);
+    //}
 
     public void CollectHarvest(string plantName, int harvestAmount)
     {
-        string time = DateTime.Today.ToString("g");
+        string time = DateTime.Now.ToString("g");
         CollectedHarvest harvest = new CollectedHarvest(plantName, time, harvestAmount);
         collectedHarvests.Add(harvest);
         UpdateAnalytics(plantName, harvestAmount);
         UIManager._instance.UpdateStatus(MakeHarvestString(plantName, harvestAmount, time));
-        PrintHarvest();
     }
 
     private void UpdateAnalytics(string plantName, int harvestAmount)
@@ -107,7 +108,19 @@ public class Harvester : MonoBehaviour
         return "On " + time + ", " + harvestAmount.ToString() + " " + plantName + str;
     }
 
-    public void PrintHarvest()
+    private void Update() //=======================================================
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PrintHarvest();
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+
+        }
+    }
+
+    public void PrintHarvest() //=======================================================
     {
         Debug.Log("========================");
         int i = 1;
