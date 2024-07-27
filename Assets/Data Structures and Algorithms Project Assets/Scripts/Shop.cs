@@ -31,6 +31,7 @@ public class Shop : MonoBehaviour
     {
         //Add coins
         _coins += valuePerItem * harvestElement._amount;
+        OnCoinsChanged.Invoke(_coins);
         Harvester._instance.RemoveHarvest(harvestElement);
     }
 }

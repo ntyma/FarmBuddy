@@ -75,12 +75,16 @@ public class UIManager : MonoBehaviour
             Debug.Log("nothing to show");
             return;
         }
+
         if(uiElements.Count > 0)
         {
             Debug.Log("clean the list");
             foreach(SellHarvestUIElement element in uiElements)
             {
-                Destroy(element.gameObject);
+                if(element != null)
+                {
+                    Destroy(element.gameObject);
+                }
             }
             uiElements.Clear();
         }
