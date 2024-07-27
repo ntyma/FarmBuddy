@@ -62,15 +62,6 @@ public class Harvester : MonoBehaviour
         // Sort the collected harvest using Quick sort
     }
 
-    //private void Start() //=======================================================
-    //{
-    //    string time = DateTime.Now.ToString("g");
-    //    CollectedHarvest harvest = new CollectedHarvest("Pumpkin", time, 3);
-    //    testPumpkin = harvest;
-    //    collectedHarvests.Add(harvest);
-    //    UpdateAnalytics("Pumpkin", 3);
-    //}
-
     public void CollectHarvest(string plantName, int harvestAmount)
     {
         string time = DateTime.Now.ToString("g");
@@ -108,35 +99,6 @@ public class Harvester : MonoBehaviour
         }
         return "On " + time + ", " + harvestAmount.ToString() + " " + plantName + str;
     }
-
-    //private void Update() //=======================================================
-    //{
-    //    if (Input.GetKeyDown(KeyCode.P))
-    //    {
-    //        PrintHarvest();
-    //    }
-    //    if (Input.GetKeyDown(KeyCode.S))
-    //    {
-
-    //    }
-    //}
-
-    //public void PrintHarvest() //=======================================================
-    //{
-    //    Debug.Log("========================");
-    //    int i = 1;
-    //    foreach (CollectedHarvest h in collectedHarvests)
-    //    {
-    //        Debug.Log(i.ToString() + ": " + h._name + " ; " + h._time + " ; " + h._amount.ToString());
-    //        i++;
-    //    }
-    //    Debug.Log("-----------");
-    //    int currentAmount;
-    //    if (_harvests.TryGetValue(collectedHarvests[1]._name, out currentAmount)) {
-    //        Debug.Log(currentAmount);
-    //    }
-    //}
-
 }
 
 // For Assignment 2, this holds a collected harvest object
