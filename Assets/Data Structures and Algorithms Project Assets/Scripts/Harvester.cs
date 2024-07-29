@@ -60,6 +60,41 @@ public class Harvester : MonoBehaviour
     public void SortHarvestByAmount()
     {
         // Sort the collected harvest using Quick sort
+        Quicksort(collectedHarvests, 0, collectedHarvests.Count - 1);
+        OnCollectionChanged.Invoke();
+    }
+
+    private void Quicksort(List<CollectedHarvest> list, int start, int end)
+    {
+        if (end <= start) return;
+
+        int pivot = Partition(list, start, end);
+        Quicksort(list, start, pivot - 1);
+        Quicksort(list, pivot + 1, end);
+    }
+
+    private int Partition(List<CollectedHarvest> list, int start, int end)
+    { 
+        int pivot = list[end]._amount;
+        int i = start - 1;
+
+        for(int j = start; j <= end; j++)
+        {
+            if (list[j]._amount < pivot)
+            {
+                i++;
+                CollectedHarvest temp = list[i];
+                list[i] = list[j];
+                list[j] = temp;
+            }
+        }
+
+        i++;
+        CollectedHarvest tmp = list[i];
+        list[i] = list[end];
+        list[end] = tmp;
+
+        return i;
     }
 
     public void CollectHarvest(string plantName, int harvestAmount)

@@ -87,7 +87,6 @@ public class UIManager : MonoBehaviour
         {
             if (uiElements.Count > 0)
             {
-                Debug.Log("clean the list");
                 foreach (SellHarvestUIElement element in uiElements)
                 {
                     if (element != null)
