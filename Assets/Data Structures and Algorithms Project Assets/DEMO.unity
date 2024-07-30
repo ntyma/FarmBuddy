@@ -569,6 +569,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _plantPrefabs:
   - {fileID: 1842740702562276335, guid: 96e957d6613954bd9bab76b0fe4bcbe1, type: 3}
+  - {fileID: 1842740702562276335, guid: ef597db527b6d4eb9b2171e60a0bf8bf, type: 3}
+  - {fileID: 1842740702562276335, guid: 6593a9d25a2d7413798dc1d6b08b5db3, type: 3}
+  - {fileID: 1842740702562276335, guid: b3e55326468874d73a8fb9b982104734, type: 3}
+  - {fileID: 1842740702562276335, guid: 6b251d789b64940f4860d5a5ee0287c3, type: 3}
   _plantParent: {fileID: 1486572178}
   _farmMap: {fileID: 1578268022}
   _farmTile: {fileID: 11400000, guid: b22b696692ab36e468037febaa4997ce, type: 2}
@@ -591,8 +595,7 @@ MonoBehaviour:
   _buySeedsUIElement: {fileID: 267955832520431552, guid: d040392c4b1b5df4ca3b18f0d6155cce, type: 3}
   _sellHarvestHolder: {fileID: 724606213}
   _sellHarvestUIElement: {fileID: 1496956209944694834, guid: 8578eadc5c3b4c14096074a2ca362e44, type: 3}
-  pumpkinSprite: {fileID: -1912336348, guid: 7862a1f8665fbd54bb34a6e6ebf41e50, type: 3}
-  pumpkinPrice: 2
+  planter: {fileID: 14500268}
 --- !u!114 &14500270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35173,7 +35176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &569361339
 RectTransform:
   m_ObjectHideFlags: 0
@@ -63499,7 +63502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1429724336
 RectTransform:
   m_ObjectHideFlags: 0

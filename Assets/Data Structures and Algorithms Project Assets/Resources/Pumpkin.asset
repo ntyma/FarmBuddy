@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37fb5cd09a8a41c42a66cfa4bd6c247f, type: 3}
-  m_Name: PlantType_Pumpkins
+  m_Name: Pumpkin
   m_EditorClassIdentifier: 
   _plantTypeName: Pumpkin
   _harvestSprite: {fileID: -1912336348, guid: 7862a1f8665fbd54bb34a6e6ebf41e50, type: 3}

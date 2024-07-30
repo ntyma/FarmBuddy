@@ -18,10 +18,10 @@ public class UIManager : MonoBehaviour
     [Header("Shop-SELL")]
     [SerializeField] private Transform _sellHarvestHolder;
     [SerializeField] private SellHarvestUIElement _sellHarvestUIElement;
-    [SerializeField] private Sprite pumpkinSprite;
-    [SerializeField] private int pumpkinPrice;
+    [SerializeField] private Planter planter;
 
     private List<SellHarvestUIElement> uiElements = new List<SellHarvestUIElement>();
+    
     private bool SellUINeedsUpdate = false;
 
     public static UIManager _instance { get; private set; }
@@ -79,7 +79,6 @@ public class UIManager : MonoBehaviour
 
         if(collectedHarvest.Count == 0)
         {
-            Debug.Log("nothing to show");
             return;
         }
 
@@ -97,11 +96,10 @@ public class UIManager : MonoBehaviour
                 uiElements.Clear();
             }
 
-            Debug.Log("Showing harvest");
             foreach (CollectedHarvest harvest in collectedHarvest)
             {
                 SellHarvestUIElement element = Instantiate(_sellHarvestUIElement, _sellHarvestHolder);
-                element.SetElement(harvest, harvest._name, harvest._time, 3, harvest._amount, pumpkinSprite);
+                element.SetElement(harvest, harvest._name, harvest._time, planter.GetPlantResourseByName(harvest._name)._pricePerHarvest, harvest._amount, planter.GetPlantResourseByName(harvest._name)._harvestSprite);
                 uiElements.Add(element);
             }
             SellUINeedsUpdate = false;

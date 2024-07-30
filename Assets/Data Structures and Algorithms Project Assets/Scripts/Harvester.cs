@@ -12,7 +12,6 @@ public class Harvester : MonoBehaviour
     private Dictionary<string, int> _harvests = new Dictionary<string, int>();
 
     // Harvest to sell
-    // Assignment 2 - Data structure to hold collected harvests
     private List<CollectedHarvest> collectedHarvests = new List<CollectedHarvest>();
     public Action OnCollectionChanged;
 
@@ -28,7 +27,6 @@ public class Harvester : MonoBehaviour
         _instance = this;
     }
 
-    // Assignment 2
     public List<CollectedHarvest> GetCollectedHarvest()
     {
         return collectedHarvests;
@@ -42,7 +40,6 @@ public class Harvester : MonoBehaviour
         OnCollectionChanged.Invoke();
     }
 
-    // Assignment 2 - CollectHarvest method to collect the harvest when picked up
     
 
     public void ShowHarvest(string plantName, int harvestAmount, int seedAmount, Vector2 position)
@@ -112,13 +109,10 @@ public class Harvester : MonoBehaviour
         int currentAmount;
         if(_harvests.TryGetValue(plantName, out currentAmount))
         {
-            //Debug.Log("current amount: " + currentAmount.ToString());
             _harvests[plantName] = currentAmount + harvestAmount;
-            //Debug.Log("NEW amount" + _harvests[plantName].ToString());
         } else
         {
             _harvests.Add(plantName, harvestAmount);
-            //Debug.Log("made new item in dictionary");
         }
     }
 

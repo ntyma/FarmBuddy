@@ -25,7 +25,6 @@ public class Shop : MonoBehaviour
         
     }
 
-    //Assignment 2
     // Get the harvest, add coins for the value, update UI and remove the item from the data structure
     public void SellHarvest(CollectedHarvest harvestElement, float valuePerItem)
     {

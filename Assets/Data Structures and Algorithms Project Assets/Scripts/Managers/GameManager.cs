@@ -29,15 +29,6 @@ public class GameManager : MonoBehaviour
         _instance = this;
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Space))
-    //    {
-    //        Debug.Log("Click");
-    //        Debug.Log(DateTime.Today.ToString("g"));
-    //    }
-    //}
-
     public Shop GetShop()
     {
         return _shop;

@@ -83,7 +83,15 @@ public class Planter : MonoBehaviour
             if (_availablePlantTypes.TryAdd(_plants[i]._plantTypeName, _plantPrefabs[i]))
             {
                 //add available seeds (nothing at starts)
-                _availableSeeds.Add(_plantPrefabs[i], Utils.START_SEEDS);
+                int seeds;
+                if(i == 0)
+                {
+                    seeds = Utils.START_SEEDS;
+                } else
+                {
+                    seeds = 0;
+                }
+                _availableSeeds.Add(_plantPrefabs[i], seeds);
 
                 //Update listeners
                 OnSeedsChanged(_plants[i]._plantTypeName, _availableSeeds[_plantPrefabs[i]]);
