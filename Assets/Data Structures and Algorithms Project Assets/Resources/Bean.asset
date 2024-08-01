@@ -15,10 +15,10 @@ MonoBehaviour:
   _plantTypeName: Bean
   _harvestSprite: {fileID: -370659641, guid: 7862a1f8665fbd54bb34a6e6ebf41e50, type: 3}
   _seedSprite: {fileID: -1910836652, guid: 7862a1f8665fbd54bb34a6e6ebf41e50, type: 3}
-  _timeToGrow: 1.5
-  _minHarvest: 2
-  _maxHarvest: 6
+  _timeToGrow: 10
+  _minHarvest: 1
+  _maxHarvest: 4
   _minSeeds: 1
   _maxSeeds: 3
   _pricePerSeed: 20
-  _pricePerHarvest: 7
+  _pricePerHarvest: 5

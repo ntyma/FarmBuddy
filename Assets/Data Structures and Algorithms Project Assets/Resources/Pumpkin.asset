@@ -15,7 +15,7 @@ MonoBehaviour:
   _plantTypeName: Pumpkin
   _harvestSprite: {fileID: -1912336348, guid: 7862a1f8665fbd54bb34a6e6ebf41e50, type: 3}
   _seedSprite: {fileID: 2034910846, guid: 7862a1f8665fbd54bb34a6e6ebf41e50, type: 3}
-  _timeToGrow: 0.5
+  _timeToGrow: 2
   _minHarvest: 1
   _maxHarvest: 5
   _minSeeds: 1

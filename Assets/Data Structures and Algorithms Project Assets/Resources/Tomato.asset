@@ -15,10 +15,10 @@ MonoBehaviour:
   _plantTypeName: Tomato
   _harvestSprite: {fileID: -130222586, guid: 7862a1f8665fbd54bb34a6e6ebf41e50, type: 3}
   _seedSprite: {fileID: -1831396922, guid: 7862a1f8665fbd54bb34a6e6ebf41e50, type: 3}
-  _timeToGrow: 2.5
+  _timeToGrow: 12
   _minHarvest: 1
   _maxHarvest: 3
   _minSeeds: 1
   _maxSeeds: 3
   _pricePerSeed: 25
-  _pricePerHarvest: 9
+  _pricePerHarvest: 7

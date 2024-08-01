@@ -15,10 +15,10 @@ MonoBehaviour:
   _plantTypeName: Carrot
   _harvestSprite: {fileID: 1702568233, guid: 7862a1f8665fbd54bb34a6e6ebf41e50, type: 3}
   _seedSprite: {fileID: 2137963299, guid: 7862a1f8665fbd54bb34a6e6ebf41e50, type: 3}
-  _timeToGrow: 1
+  _timeToGrow: 5
   _minHarvest: 1
-  _maxHarvest: 4
+  _maxHarvest: 3
   _minSeeds: 1
   _maxSeeds: 3
   _pricePerSeed: 15
-  _pricePerHarvest: 5
+  _pricePerHarvest: 3
