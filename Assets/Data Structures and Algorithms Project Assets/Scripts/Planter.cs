@@ -50,9 +50,24 @@ public class Planter : MonoBehaviour
         Initialize();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            test();
+        }
+    }
+
     private void test()
     {
-        
+        string str = "";
+        foreach(KeyValuePair<Plant, int> p in _availableSeeds)
+        {
+            string name = p.Key.name;
+            str +=  name + " : " + p.Value + "\n";
+        }
+
+        Debug.Log(str);
     }
 
     public List<Plant> GetPlantedPlants()
@@ -88,16 +103,18 @@ public class Planter : MonoBehaviour
             if (_availablePlantTypes.TryAdd(_plants[i]._plantTypeName, _plantPrefabs[i]))
             {
                 //add available seeds (nothing at starts)
-                //int seeds;
-                //if(i == 0)
-                //{
-                //    seeds = Utils.START_SEEDS;
-                //} else
-                //{
-                //    seeds = 0;
-                //}
-                //_availableSeeds.Add(_plantPrefabs[i], seeds);
-                _availableSeeds.Add(_plantPrefabs[i], Utils.START_SEEDS);
+                int seeds;
+                if (i == 0)
+                {
+                    seeds = Utils.START_SEEDS;
+                }
+                else
+                {
+                    seeds = 0;
+                }
+                _availableSeeds.Add(_plantPrefabs[i], seeds);
+
+                //_availableSeeds.Add(_plantPrefabs[i], Utils.START_SEEDS);
                 //Update listeners
                 OnSeedsChanged(_plants[i]._plantTypeName, _availableSeeds[_plantPrefabs[i]]);
 
@@ -175,10 +192,10 @@ public class Planter : MonoBehaviour
             if(_availableSeeds.ContainsKey(plantType))
             {
                 // add seeds to that plant
-                _availableSeeds[_selectedPlantType] += seeds;
+                _availableSeeds[plantType] += seeds;
 
                 // Update listeners
-                OnSeedsChanged(plantName, _availableSeeds[_selectedPlantType]);
+                OnSeedsChanged(plantName, _availableSeeds[plantType]);
 
             }
         }
